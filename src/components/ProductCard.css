@@ -1,0 +1,36 @@
+.product-card__image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-shell);
+}
+
+.product-card__image-wrapper .badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 1;
+}
+
+.product-card__placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: var(--color-shell);
+}
+
+.product-card__vendor {
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.product-card__btn {
+  width: 100%;
+  margin-top: var(--space-3);
+}
+
+.product-card__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

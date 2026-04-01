@@ -1,0 +1,85 @@
+.express-checkout {
+  margin-bottom: var(--space-5);
+}
+
+.express-checkout__header,
+.express-checkout__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.express-checkout__header {
+  margin-bottom: var(--space-3);
+}
+
+.express-checkout__divider {
+  margin-top: var(--space-5);
+}
+
+.express-checkout__line {
+  flex: 1;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.express-checkout__label {
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.express-checkout__buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.express-checkout__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.25rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  padding: 0;
+}
+
+.express-checkout__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.express-checkout__btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.express-checkout__btn--shop-pay {
+  background-color: #5A31F4;
+}
+
+.express-checkout__btn--apple-pay {
+  background-color: #000000;
+}
+
+.express-checkout__btn--google-pay {
+  background-color: #000000;
+}
+
+.express-checkout__btn svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100px;
+}
+
+@media (max-width: 480px) {
+  .express-checkout__buttons {
+    grid-template-columns: 1fr;
+  }
+}

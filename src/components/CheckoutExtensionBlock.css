@@ -1,0 +1,279 @@
+/* Clean mode — no dev labels, seamless with checkout */
+.extension-block {
+  margin: var(--space-3) 0;
+}
+
+/* Dev mode — dashed border with labels for Shopify dev handoff */
+.extension-block--dev {
+  border: 1.5px dashed var(--color-beige);
+  border-radius: var(--border-radius);
+  padding: var(--space-3);
+  background-color: rgba(245, 246, 241, 0.5);
+}
+
+.extension-block__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.extension-block__type {
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: var(--color-white);
+  background-color: var(--color-dark-beige);
+}
+
+.extension-block__type--recommendations { background-color: #6366f1; }
+.extension-block__type--content-block { background-color: #8b5cf6; }
+.extension-block__type--progress-bar { background-color: #ec4899; }
+.extension-block__type--line-item-editor { background-color: #06b6d4; }
+
+.extension-block__point {
+  font-size: var(--font-size-2xs);
+  font-family: ui-monospace, Consolas, monospace;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================
+   Recommendation widget
+   ========================================== */
+
+.extension-rec {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.extension-rec__heading {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+}
+
+.extension-rec__subtext {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.extension-rec__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-bg);
+}
+
+.extension-rec__image {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-shell);
+  flex-shrink: 0;
+}
+
+.extension-rec__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.extension-rec__title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.extension-rec__price {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.extension-rec__add {
+  font-size: var(--font-size-xs);
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-border-input);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-bg);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-heading);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.extension-rec__add:hover {
+  background: var(--color-teal);
+  color: var(--color-white);
+  border-color: var(--color-teal);
+}
+
+/* ==========================================
+   Progress bar widget
+   ========================================== */
+
+.extension-progress {
+  text-align: center;
+}
+
+.extension-progress__bar-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.extension-progress__milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-muted);
+}
+
+.extension-progress__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--border-radius-full);
+  border: 1.5px solid var(--color-border-input);
+  background: var(--color-bg);
+}
+
+.extension-progress__dot--reached {
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+}
+
+.extension-progress__track {
+  flex: 1;
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.extension-progress__fill {
+  height: 100%;
+  background: var(--color-teal);
+  border-radius: 2px;
+  transition: width var(--transition-base);
+}
+
+.extension-progress__text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.extension-progress__text strong {
+  color: var(--color-heading);
+}
+
+/* ==========================================
+   Content block widget
+   ========================================== */
+
+.extension-content {
+  text-align: center;
+  padding: var(--space-2) 0;
+}
+
+.extension-content__icon {
+  margin-bottom: var(--space-2);
+  color: var(--color-teal);
+}
+
+.extension-content__label {
+  font-size: var(--font-size-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.extension-content__message {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+  line-height: var(--line-height-snug);
+}
+
+.extension-content__detail {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ==========================================
+   Line item editor (in order summary only, max 1)
+   ========================================== */
+
+.extension-line-editor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+
+.extension-line-editor__image {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-shell);
+  flex-shrink: 0;
+}
+
+.extension-line-editor__info {
+  flex: 1;
+}
+
+.extension-line-editor__title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-heading);
+}
+
+.extension-line-editor__prices {
+  font-size: var(--font-size-xs);
+}
+
+.extension-line-editor__sale {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+}
+
+.extension-line-editor__compare {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+  margin-left: var(--space-1);
+}
+
+.extension-line-editor__switch {
+  font-size: var(--font-size-xs);
+  color: var(--color-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.extension-line-editor__select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-input);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-heading);
+}

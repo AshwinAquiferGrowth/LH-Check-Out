@@ -1,0 +1,86 @@
+/* Section headings — teal with subtle weight */
+.checkout-info__heading {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-4);
+  color: var(--color-heading);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Form card wrapper */
+.checkout-info__field {
+  margin-bottom: var(--space-3);
+}
+
+.checkout-info__row {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.checkout-info__row--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.checkout-info__row--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.checkout-info__checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+  cursor: pointer;
+}
+
+.checkout-info__checkbox input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--color-teal);
+  border-radius: 3px;
+}
+
+/* Navigation — generous spacing */
+.checkout-info__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.checkout-info__back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-teal);
+  padding: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.checkout-info__back:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .checkout-info__row--2,
+  .checkout-info__row--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-info__nav {
+    flex-direction: column-reverse;
+    gap: var(--space-3);
+    align-items: stretch;
+    text-align: center;
+  }
+}

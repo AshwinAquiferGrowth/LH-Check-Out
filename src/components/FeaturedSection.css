@@ -1,0 +1,21 @@
+.featured__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.featured__header h2 {
+  margin-top: var(--space-2);
+}
+
+.featured__link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.featured__link:hover {
+  color: var(--color-text);
+}

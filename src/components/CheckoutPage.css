@@ -1,0 +1,126 @@
+.checkout-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafaf8;
+}
+
+/* Teal announcement bar — generous padding */
+.checkout-page__announcement {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+  text-align: center;
+  padding: 0.625rem var(--container-padding);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.03em;
+}
+
+/* Header — clean, airy, subtle accent */
+.checkout-page__header {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-bg);
+}
+
+.checkout-page__header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.checkout-page__logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+}
+
+.checkout-page__logo-live {
+  font-size: 1.375rem;
+  font-weight: var(--font-weight-regular);
+  font-style: italic;
+  color: var(--color-heading);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.checkout-page__logo-healthillie {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-heading);
+}
+
+/* Body */
+.checkout-page__body {
+  flex: 1;
+  padding: 0 var(--space-5);
+}
+
+.checkout-page__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--space-8);
+}
+
+/* Left column — generous padding, airy */
+.checkout-page__form {
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+/* Right column — subtle visual separation */
+.checkout-page__sidebar {
+  padding: var(--space-6) 0 var(--space-6) var(--space-6);
+  border-left: 1px solid var(--color-border);
+}
+
+/* Footer */
+.checkout-page__footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-5) var(--space-5);
+  background-color: var(--color-bg);
+  text-align: center;
+}
+
+.checkout-page__footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.checkout-page__footer a {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.checkout-page__footer a:hover {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .checkout-page__inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .checkout-page__sidebar {
+    order: -1;
+    padding: var(--space-4) 0;
+    border-left: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .checkout-page__form {
+    padding: var(--space-4) 0 var(--space-5);
+  }
+
+  .checkout-page__body {
+    padding: 0 var(--container-padding);
+  }
+}
