@@ -168,4 +168,32 @@
     align-items: stretch;
     text-align: center;
   }
+
+  .checkout-shipping__summary-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-shipping__heading {
+    font-size: var(--font-size-sm);
+  }
+
+  .checkout-shipping__method {
+    padding: var(--space-3);
+  }
+
+  .checkout-shipping__nav {
+    position: sticky;
+    bottom: 0;
+    margin-top: var(--space-4);
+    padding: var(--space-3) 0;
+    background-color: #fafaf8;
+    border-top: 1px solid var(--color-border);
+    z-index: 10;
+  }
+
+  .checkout-shipping__summary {
+    padding: var(--space-3);
+  }
 }

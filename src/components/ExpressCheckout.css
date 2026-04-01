@@ -78,8 +78,12 @@
   max-width: 100px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .express-checkout__buttons {
     grid-template-columns: 1fr;
+  }
+
+  .express-checkout__btn {
+    height: 3rem;
   }
 }

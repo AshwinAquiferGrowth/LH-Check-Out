@@ -112,7 +112,7 @@
      ========================================== */
 
   --container-width: 1280px;
-  --container-padding: 2rem;
+  --container-padding: clamp(1rem, 4vw, 2rem);
   --gap: 2rem;
 
   --border-radius: 0.8rem;   /* live site: 0.8rem */
@@ -274,6 +274,7 @@ h4 { font-size: var(--font-size-lg); }
   justify-content: center;
   gap: var(--space-2);
   padding: 0.875rem 2rem;
+  min-height: 48px;
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
@@ -422,8 +423,9 @@ h4 { font-size: var(--font-size-lg); }
 .input {
   width: 100%;
   padding: 0.875rem 1rem;
+  min-height: 48px;
   font-family: var(--font-body);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   border: 1px solid var(--color-border-input);
   border-radius: var(--border-radius);
   background-color: var(--color-white);

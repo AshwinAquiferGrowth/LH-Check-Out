@@ -123,4 +123,27 @@
   .checkout-page__body {
     padding: 0 var(--container-padding);
   }
+
+  .checkout-page__header {
+    padding: var(--space-3) var(--container-padding);
+  }
+
+  .checkout-page__footer-inner {
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page__announcement {
+    font-size: var(--font-size-2xs);
+    padding: 0.5rem var(--space-3);
+  }
+
+  .checkout-page__logo-live {
+    font-size: 1.125rem;
+  }
+
+  .checkout-page__logo-healthillie {
+    font-size: var(--font-size-xs);
+  }
 }

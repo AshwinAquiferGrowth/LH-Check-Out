@@ -6,7 +6,7 @@ import './CheckoutOrderSummary.css'
 
 function CheckoutOrderSummary({ shippingCost = null }) {
   const { state, dispatch, cartTotal, cartCount } = useCart()
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(() => window.innerWidth > 768)
   const [discountCode, setDiscountCode] = useState('')
 
   const shipping = shippingCost !== null ? shippingCost : null
@@ -29,10 +29,13 @@ function CheckoutOrderSummary({ shippingCost = null }) {
         className="order-summary__toggle"
         onClick={() => setExpanded(!expanded)}
       >
-        <span>Order summary</span>
-        <span className={`order-summary__toggle-icon ${expanded ? 'order-summary__toggle-icon--open' : ''}`}>
-          <IconChevronDown size={16} />
+        <span className="order-summary__toggle-left">
+          <span className={expanded ? 'order-summary__toggle-chevron--open' : ''}>
+            <IconChevronDown size={16} />
+          </span>
+          <span>{expanded ? 'Hide' : 'Show'} order summary</span>
         </span>
+        <span className="order-summary__toggle-total">${total.toFixed(2)}</span>
       </button>
 
       <div className={`order-summary__content ${expanded ? 'order-summary__content--open' : ''}`}>

@@ -79,3 +79,28 @@
     align-self: auto;
   }
 }
+
+@media (max-width: 480px) {
+  .checkout-trust-banner__inner {
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .checkout-trust-banner__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .checkout-trust-banner__label {
+    font-size: var(--font-size-xs);
+  }
+
+  .checkout-trust-banner__stars svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkout-trust-banner__rating {
+    font-size: var(--font-size-sm);
+  }
+}

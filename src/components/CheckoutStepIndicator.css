@@ -94,12 +94,33 @@
 }
 
 @media (max-width: 480px) {
+  .step-indicator {
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
   .step-indicator__label {
-    display: none;
+    font-size: var(--font-size-2xs);
   }
 
   .step-indicator__connector {
-    min-width: 1rem;
-    margin: 0 0.5rem;
+    min-width: 0.75rem;
+    margin: 0 0.375rem;
+  }
+
+  .step-indicator__number {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: var(--font-size-2xs);
+  }
+
+  .step-indicator__step {
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .step-indicator__label {
+    display: none;
   }
 }
