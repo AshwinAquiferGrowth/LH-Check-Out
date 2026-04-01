@@ -2,13 +2,14 @@ import { useState } from 'react'
 import { useCart } from '../context/CartContext'
 import { products, brandInfo } from '../data/products'
 import { IconChevronDown, IconLeaf, IconLock } from './icons'
-import CheckoutExtensionBlock from './CheckoutExtensionBlock'
 import './CheckoutOrderSummary.css'
 
 function CheckoutOrderSummary({ shippingCost = null }) {
   const { state, dispatch, cartTotal, cartCount } = useCart()
   const [expanded, setExpanded] = useState(true)
   const [discountCode, setDiscountCode] = useState('')
+  const [subMode, setSubMode] = useState('onetime') // 'onetime' | 'subscribe'
+  const [subFrequency, setSubFrequency] = useState('4 weeks')
 
   const shipping = shippingCost !== null ? shippingCost : null
   const taxRate = 0.08
@@ -41,52 +42,81 @@ function CheckoutOrderSummary({ shippingCost = null }) {
       <div className={`order-summary__content ${expanded ? 'order-summary__content--open' : ''}`}>
         {/* Line items */}
         <div className="order-summary__items">
-          {state.items.map((item) => (
-            <div key={item.id} className="order-summary__item">
-              <div className="order-summary__item-image-wrap">
-                <img src={item.image} alt={item.title} className="order-summary__item-image" />
-                <span className="order-summary__item-qty">{item.quantity}</span>
+          {state.items.map((item, idx) => (
+            <div key={item.id} className="order-summary__item-group">
+              <div className="order-summary__item">
+                <div className="order-summary__item-image-wrap">
+                  <img src={item.image} alt={item.title} className="order-summary__item-image" />
+                  <span className="order-summary__item-qty">{item.quantity}</span>
+                </div>
+                <div className="order-summary__item-info">
+                  <p className="order-summary__item-title">{item.title}</p>
+                  <p className="order-summary__item-vendor">{item.vendor}</p>
+                  <button
+                    className="order-summary__item-remove"
+                    onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: item.id })}
+                    aria-label={`Remove ${item.title} from cart`}
+                  >
+                    Remove
+                  </button>
+                </div>
+                <p className="order-summary__item-price">
+                  ${(parseFloat(item.price) * item.quantity).toFixed(2)}
+                </p>
               </div>
-              <div className="order-summary__item-info">
-                <p className="order-summary__item-title">{item.title}</p>
-                <p className="order-summary__item-vendor">{item.vendor}</p>
-                <button
-                  className="order-summary__item-remove"
-                  onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: item.id })}
-                  aria-label={`Remove ${item.title} from cart`}
-                >
-                  Remove
-                </button>
-              </div>
-              <p className="order-summary__item-price">
-                ${(parseFloat(item.price) * item.quantity).toFixed(2)}
-              </p>
+
+              {/* Recharge offer — attached to first item only (max 1 Line Item Editor) */}
+              {idx === 0 && (
+                <div className="recharge-offer">
+                  <div className="recharge-offer__options">
+                    <label className={`recharge-offer__option ${subMode === 'onetime' ? 'recharge-offer__option--active' : ''}`}>
+                      <input
+                        type="radio"
+                        name="purchase-type"
+                        checked={subMode === 'onetime'}
+                        onChange={() => setSubMode('onetime')}
+                      />
+                      <span className="recharge-offer__option-label">One-time purchase</span>
+                      <span className="recharge-offer__option-price">${item.price}</span>
+                    </label>
+
+                    <label className={`recharge-offer__option ${subMode === 'subscribe' ? 'recharge-offer__option--active' : ''}`}>
+                      <input
+                        type="radio"
+                        name="purchase-type"
+                        checked={subMode === 'subscribe'}
+                        onChange={() => setSubMode('subscribe')}
+                      />
+                      <div className="recharge-offer__option-content">
+                        <span className="recharge-offer__option-label">Subscribe & Save</span>
+                        <span className="recharge-offer__badge">15% off</span>
+                      </div>
+                      <span className="recharge-offer__option-price recharge-offer__option-price--sale">
+                        ${(parseFloat(item.price) * 0.85).toFixed(2)}
+                      </span>
+                    </label>
+                  </div>
+
+                  {subMode === 'subscribe' && (
+                    <div className="recharge-offer__frequency">
+                      <label className="recharge-offer__frequency-label">Deliver every</label>
+                      <select
+                        className="recharge-offer__frequency-select"
+                        value={subFrequency}
+                        onChange={(e) => setSubFrequency(e.target.value)}
+                      >
+                        <option value="2 weeks">2 weeks</option>
+                        <option value="4 weeks">4 weeks</option>
+                        <option value="6 weeks">6 weeks</option>
+                        <option value="8 weeks">8 weeks</option>
+                      </select>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
-
-        {/* Line Item Editor (max 1) — subscription upgrade */}
-        {subItem && (
-          <CheckoutExtensionBlock type="Line Item Editor">
-            <div className="extension-line-editor">
-              <img src={subItem.image} alt={subItem.title} className="extension-line-editor__image" />
-              <div className="extension-line-editor__info">
-                <p className="extension-line-editor__title">{subItem.title}</p>
-                <div className="extension-line-editor__prices">
-                  <span className="extension-line-editor__sale">${(parseFloat(subItem.price) * 0.85).toFixed(2)}</span>
-                  <span className="extension-line-editor__compare">${subItem.price}</span>
-                </div>
-                <p className="extension-line-editor__switch">Subscribe & Save 15%</p>
-              </div>
-              <select className="extension-line-editor__select">
-                <option>Deliver Every</option>
-                <option>2 weeks</option>
-                <option>4 weeks</option>
-                <option>6 weeks</option>
-              </select>
-            </div>
-          </CheckoutExtensionBlock>
-        )}
 
         {/* Discount code */}
         <div className="order-summary__discount">
@@ -132,6 +162,7 @@ function CheckoutOrderSummary({ shippingCost = null }) {
               ${total.toFixed(2)}
             </span>
           </div>
+          <p className="order-summary__points">Earn <strong>{Math.floor(total)}</strong> points with this purchase</p>
         </div>
 
         {/* Free shipping progress — dynamic widget, no custom bg */}

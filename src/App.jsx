@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import CartDrawer from './components/CartDrawer'
 import CheckoutPage from './components/CheckoutPage'
 import OrderConfirmation from './components/OrderConfirmation'
+import GorgiasChat from './components/GorgiasChat'
 import './App.css'
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
 
       {/* Cart drawer — always present */}
       <CartDrawer />
+
+      {/* Gorgias chat — checkout only */}
+      {step >= 1 && step <= 3 && <GorgiasChat />}
     </div>
   )
 }
