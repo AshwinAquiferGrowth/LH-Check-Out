@@ -29,15 +29,8 @@
 .order-summary__items {
   display: flex;
   flex-direction: column;
+  gap: 0;
   margin-bottom: var(--space-4);
-}
-
-.order-summary__item-group {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.order-summary__item-group:last-child {
-  border-bottom: none;
 }
 
 .order-summary__item {
@@ -46,11 +39,11 @@
   gap: var(--space-3);
   align-items: start;
   padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
-/* Recharge offer tucks under its line item */
-.order-summary__item-group .recharge-offer {
-  padding-bottom: var(--space-3);
+.order-summary__item:last-child {
+  border-bottom: none;
 }
 
 .order-summary__item-image-wrap {
