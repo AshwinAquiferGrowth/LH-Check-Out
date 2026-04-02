@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useCart } from './context/CartContext'
 import AnnouncementBar from './components/AnnouncementBar'
 import Header from './components/Header'
@@ -18,6 +19,10 @@ import './App.css'
 function App() {
   const { state } = useCart()
   const step = state.checkoutStep
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [step])
 
   return (
     <div className="app">

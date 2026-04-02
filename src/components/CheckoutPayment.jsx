@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useCart } from '../context/CartContext'
-import { IconLock, IconVisa, IconMastercard, IconAmex, IconShield, IconRefresh } from './icons'
+import { IconLock, IconVisa, IconMastercard, IconAmex, IconShield } from './icons'
 import './CheckoutPayment.css'
 
 function CheckoutPayment() {
@@ -86,11 +86,6 @@ function CheckoutPayment() {
         <div className="checkout-payment__trust-item">
           <IconShield size={15} />
           <span>Clean, low-tox products</span>
-        </div>
-        <span className="checkout-payment__trust-sep">·</span>
-        <div className="checkout-payment__trust-item">
-          <IconRefresh size={15} />
-          <span>30-day returns</span>
         </div>
         <span className="checkout-payment__trust-sep">·</span>
         <div className="checkout-payment__trust-item">
