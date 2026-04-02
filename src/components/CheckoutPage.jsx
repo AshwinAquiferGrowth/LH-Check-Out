@@ -1,6 +1,5 @@
 import { useCart } from '../context/CartContext'
 import { brandInfo } from '../data/products'
-import CheckoutStepIndicator from './CheckoutStepIndicator'
 import CheckoutOrderSummary from './CheckoutOrderSummary'
 import CheckoutInformation from './CheckoutInformation'
 import CheckoutShipping from './CheckoutShipping'
@@ -8,26 +7,33 @@ import CheckoutPayment from './CheckoutPayment'
 import './CheckoutPage.css'
 
 function CheckoutPage() {
-  const { state, cartTotal } = useCart()
-  const step = state.checkoutStep
+  const { cartTotal } = useCart()
 
   const freeShipping = cartTotal >= brandInfo.freeShippingThreshold
-  const shippingCost = step >= 2 ? (freeShipping ? 0 : 7.99) : null
+  const shippingCost = freeShipping ? 0 : 7.99
 
   return (
     <div className="checkout-page">
-      {/* Teal announcement bar */}
-      <div className="checkout-page__announcement">
-        <p>Free shipping on orders over $123 ✦ 130,000+ Customers Living Healthillie</p>
-      </div>
-
-      {/* Branded header */}
+      {/* Branded header — centered like PROMIX */}
       <div className="checkout-page__header">
         <div className="checkout-page__header-inner">
-          <span className="checkout-page__logo">
-            <span className="checkout-page__logo-live">Live</span>
-            <span className="checkout-page__logo-healthillie">Healthillie</span>
-          </span>
+          <img src="/logo-checkout.svg" alt="Live Healthillie" className="checkout-page__logo" />
+
+          <div className="checkout-page__header-trust">
+            <div className="checkout-page__header-stars">
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#FDBE40" stroke="#FDBE40" strokeWidth="1">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              ))}
+              <span className="checkout-page__header-reviews">130,000+ Customers Living Healthillie</span>
+            </div>
+            <div className="checkout-page__header-badges">
+              <span>✓ Clean Ingredients, Always</span>
+              <span>✓ Free Shipping Over $125</span>
+              <span>✓ Ships Within 2-3 Business Days</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -35,10 +41,9 @@ function CheckoutPage() {
       <div className="checkout-page__body">
         <div className="checkout-page__inner">
           <div className="checkout-page__form">
-            <CheckoutStepIndicator />
-            {step === 1 && <CheckoutInformation />}
-            {step === 2 && <CheckoutShipping />}
-            {step === 3 && <CheckoutPayment />}
+            <CheckoutInformation />
+            <CheckoutShipping />
+            <CheckoutPayment />
           </div>
 
           <div className="checkout-page__sidebar">

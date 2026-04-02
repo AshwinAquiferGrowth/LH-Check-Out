@@ -1,12 +1,8 @@
 import { useState } from 'react'
-import { useCart } from '../context/CartContext'
-import { IconTruck } from './icons'
-import CheckoutTrustBanner from './CheckoutTrustBanner'
 import ExpressCheckout from './ExpressCheckout'
 import './CheckoutInformation.css'
 
 function CheckoutInformation() {
-  const { dispatch, cartTotal } = useCart()
   const [form, setForm] = useState({
     email: '', firstName: '', lastName: '',
     address: '', apartment: '', city: '',
@@ -19,9 +15,6 @@ function CheckoutInformation() {
 
   return (
     <div className="checkout-info">
-      {/* Branded trust banner (would be a PNG image in Shopify checkout) */}
-      <CheckoutTrustBanner />
-
       {/* Express checkout — reduces friction, Shopify native feature */}
       <ExpressCheckout />
 
@@ -69,21 +62,6 @@ function CheckoutInformation() {
       </div>
       <div className="checkout-info__field">
         <input className="input" placeholder="Phone (optional)" value={form.phone} onChange={(e) => update('phone', e.target.value)} />
-      </div>
-
-      <div className="checkout-info__nav">
-        <button
-          className="checkout-info__back"
-          onClick={() => { dispatch({ type: 'SET_CHECKOUT_STEP', payload: 0 }); dispatch({ type: 'OPEN_DRAWER' }) }}
-        >
-          ← Return to cart
-        </button>
-        <button
-          className="btn btn--primary btn--lg"
-          onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 2 })}
-        >
-          Continue to shipping
-        </button>
       </div>
     </div>
   )

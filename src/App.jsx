@@ -39,7 +39,7 @@ function App() {
         </>
       )}
 
-      {/* Checkout: steps 1-3 */}
+      {/* Checkout — single page */}
       {step >= 1 && step <= 3 && <CheckoutPage />}
 
       {/* Order confirmation */}

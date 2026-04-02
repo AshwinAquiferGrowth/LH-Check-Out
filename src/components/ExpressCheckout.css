@@ -1,5 +1,7 @@
 .express-checkout {
   margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .express-checkout__header,
@@ -80,10 +82,15 @@
 
 @media (max-width: 640px) {
   .express-checkout__buttons {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
   }
 
   .express-checkout__btn {
-    height: 3rem;
+    height: 2.75rem;
+  }
+
+  .express-checkout__btn svg {
+    max-width: 80px;
   }
 }

@@ -1,7 +1,5 @@
 import { useCart } from '../context/CartContext'
 import { brandInfo, products } from '../data/products'
-import { IconShield } from './icons'
-import CheckoutExtensionBlock from './CheckoutExtensionBlock'
 import './OrderConfirmation.css'
 
 function OrderConfirmation() {
@@ -18,17 +16,18 @@ function OrderConfirmation() {
 
   return (
     <div className="confirmation">
-      {/* Teal announcement bar */}
-      <div className="confirmation__announcement">
-        <p>Thank you for choosing clean living ✦ Follow @livehealthillie</p>
-      </div>
-
+      {/* Header — matches checkout centered style */}
       <div className="confirmation__header">
         <div className="confirmation__header-inner">
-          <span className="confirmation__logo">
-            <span className="confirmation__logo-live">Live</span>
-            <span className="confirmation__logo-healthillie">Healthillie</span>
-          </span>
+          <img src="/logo-checkout.svg" alt="Live Healthillie" className="confirmation__logo" />
+          <div className="confirmation__header-stars">
+            {[...Array(5)].map((_, i) => (
+              <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#FDBE40" stroke="#FDBE40" strokeWidth="1">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            ))}
+            <span className="confirmation__header-reviews">130,000+ Customers Living Healthillie</span>
+          </div>
         </div>
       </div>
 
@@ -47,27 +46,40 @@ function OrderConfirmation() {
             <h1 className="confirmation__title">Thank you!</h1>
             <p className="confirmation__subtitle">Your order is confirmed. We'll send you a shipping confirmation email when your order ships.</p>
 
-            <div className="confirmation__map">
-              <p>Map preview</p>
-              <span>Shopify renders a native map — custom JS not supported</span>
+            <div className="confirmation__info-grid">
+              <div className="confirmation__info-section">
+                <h3>Shipping address</h3>
+                <p>John Doe</p>
+                <p>123 Main St</p>
+                <p>City, KS 66101</p>
+                <p>United States</p>
+              </div>
+
+              <div className="confirmation__info-section">
+                <h3>Billing address</h3>
+                <p>John Doe</p>
+                <p>123 Main St</p>
+                <p>City, KS 66101</p>
+                <p>United States</p>
+              </div>
+
+              <div className="confirmation__info-section">
+                <h3>Shipping method</h3>
+                <p>Standard Shipping</p>
+                <p>5–7 business days</p>
+              </div>
+
+              <div className="confirmation__info-section">
+                <h3>Payment method</h3>
+                <p>Visa ending in 4242</p>
+                <p>${total.toFixed(2)}</p>
+              </div>
             </div>
 
-            <div className="confirmation__info-section">
-              <h3>Shipping address</h3>
-              <p>John Doe</p>
-              <p>123 Main St</p>
-              <p>City, KS 66101</p>
-              <p>United States</p>
-            </div>
-
-            <div className="confirmation__info-section">
-              <h3>Shipping method</h3>
-              <p>Standard Shipping (5–7 business days)</p>
-            </div>
-
-            <div className="confirmation__info-section">
-              <h3>Payment method</h3>
-              <p>Visa ending in 4242 — ${total.toFixed(2)}</p>
+            {/* Brand message */}
+            <div className="confirmation__brand-message">
+              <p className="confirmation__brand-tagline">Another day, another chance to live healthillie</p>
+              <p className="confirmation__brand-follow">Follow us <strong>@livehealthillie</strong> for clean living tips, new drops, and community stories.</p>
             </div>
 
             <button
@@ -115,41 +127,40 @@ function OrderConfirmation() {
               </div>
             </div>
 
-            {/* Post-purchase recommendations */}
+            {/* Post-purchase recommendations — vertical cards matching checkout */}
             {recs.length > 0 && (
               <div className="confirmation__recs">
-                <p className="confirmation__recs-heading">You Might Also Like</p>
-                {recs.map((p) => (
-                  <div key={p.id} className="confirmation__rec-item">
-                    <img src={p.image} alt={p.title} className="confirmation__rec-image" />
-                    <div className="confirmation__rec-info">
-                      <p className="confirmation__rec-title">{p.title}</p>
-                      <p className="confirmation__rec-price">${p.price}</p>
+                <p className="confirmation__recs-heading">You might also like</p>
+                <div className="confirmation__recs-grid">
+                  {recs.map((p) => (
+                    <div key={p.id} className="confirmation__rec-card">
+                      <div className="confirmation__rec-image-wrap">
+                        <img src={p.image} alt={p.title} className="confirmation__rec-image" />
+                      </div>
+                      <div className="confirmation__rec-details">
+                        <p className="confirmation__rec-title">{p.title}</p>
+                        <p className="confirmation__rec-price">${p.price}</p>
+                        <button
+                          className="confirmation__rec-add"
+                          onClick={() => dispatch({ type: 'ADD_ITEM', payload: { id: p.id, title: p.title, vendor: p.vendor, price: p.price, image: p.image } })}
+                        >
+                          Add to order
+                        </button>
+                      </div>
                     </div>
-                    <button
-                      className="confirmation__rec-add"
-                      onClick={() => dispatch({ type: 'ADD_ITEM', payload: { id: p.id, title: p.title, vendor: p.vendor, price: p.price, image: p.image } })}
-                    >
-                      Add
-                    </button>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
-
-            {/* Brand message */}
-            <div className="confirmation__brand-message">
-              <p>Another day, another chance to live healthillie</p>
-              <span>Follow us @livehealthillie for wellness tips</span>
-            </div>
           </div>
         </div>
       </div>
 
       <div className="confirmation__footer">
         <div className="confirmation__footer-inner">
-          <IconShield size={14} />
-          <span>All information is encrypted and secure</span>
+          <a href="#refund">Refund policy</a>
+          <a href="#privacy">Privacy policy</a>
+          <a href="#terms">Terms of service</a>
         </div>
       </div>
     </div>

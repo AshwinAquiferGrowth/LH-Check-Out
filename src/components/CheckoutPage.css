@@ -5,49 +5,60 @@
   background-color: #fafaf8;
 }
 
-/* Teal announcement bar — generous padding */
-.checkout-page__announcement {
-  background-color: var(--color-teal);
-  color: var(--color-white);
-  text-align: center;
-  padding: 0.625rem var(--container-padding);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.03em;
-}
-
-/* Header — clean, airy, subtle accent */
+/* Header — centered brand block */
 .checkout-page__header {
   border-bottom: 1px solid var(--color-border);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-5) var(--space-5) var(--space-4);
   background-color: var(--color-bg);
+  text-align: center;
 }
 
 .checkout-page__header-inner {
   max-width: 1100px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .checkout-page__logo {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.3em;
+  height: 24px;
+  width: auto;
 }
 
-.checkout-page__logo-live {
-  font-size: 1.375rem;
-  font-weight: var(--font-weight-regular);
-  font-style: italic;
-  color: var(--color-heading);
-  letter-spacing: var(--letter-spacing-tight);
+/* Stars + reviews */
+.checkout-page__header-trust {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
 }
 
-.checkout-page__logo-healthillie {
-  font-size: var(--font-size-sm);
+.checkout-page__header-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.checkout-page__header-reviews {
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
   color: var(--color-heading);
+  margin-left: var(--space-2);
+}
+
+/* Trust badges row */
+.checkout-page__header-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.checkout-page__header-badges span {
+  white-space: nowrap;
 }
 
 /* Body */
@@ -60,7 +71,7 @@
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 55fr 45fr;
   gap: var(--space-8);
 }
 
@@ -125,7 +136,13 @@
   }
 
   .checkout-page__header {
-    padding: var(--space-3) var(--container-padding);
+    padding: var(--space-4) var(--container-padding) var(--space-3);
+  }
+
+  .checkout-page__header-badges {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2) var(--space-3);
   }
 
   .checkout-page__footer-inner {
@@ -134,16 +151,21 @@
 }
 
 @media (max-width: 480px) {
-  .checkout-page__announcement {
+  .checkout-page__logo {
+    height: 18px;
+  }
+
+  .checkout-page__header-badges {
     font-size: var(--font-size-2xs);
-    padding: 0.5rem var(--space-3);
+    gap: var(--space-1) var(--space-2);
   }
 
-  .checkout-page__logo-live {
-    font-size: 1.125rem;
+  .checkout-page__header-reviews {
+    font-size: var(--font-size-2xs);
   }
 
-  .checkout-page__logo-healthillie {
-    font-size: var(--font-size-xs);
+  .checkout-page__header-stars svg {
+    width: 12px;
+    height: 12px;
   }
 }

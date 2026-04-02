@@ -5,7 +5,7 @@ import { IconTruck } from './icons'
 import './CheckoutShipping.css'
 
 function CheckoutShipping() {
-  const { dispatch, cartTotal } = useCart()
+  const { cartTotal } = useCart()
   const freeShipping = cartTotal >= brandInfo.freeShippingThreshold
   const [method, setMethod] = useState('standard')
 
@@ -26,30 +26,6 @@ function CheckoutShipping() {
 
   return (
     <div className="checkout-shipping">
-      {/* Summary from step 1 */}
-      <div className="checkout-shipping__summary">
-        <div className="checkout-shipping__summary-row">
-          <span className="checkout-shipping__summary-label">Contact</span>
-          <span className="checkout-shipping__summary-value">customer@example.com</span>
-          <button
-            className="checkout-shipping__change"
-            onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 1 })}
-          >
-            Change
-          </button>
-        </div>
-        <div className="checkout-shipping__summary-row">
-          <span className="checkout-shipping__summary-label">Ship to</span>
-          <span className="checkout-shipping__summary-value">123 Main St, City, KS 66101</span>
-          <button
-            className="checkout-shipping__change"
-            onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 1 })}
-          >
-            Change
-          </button>
-        </div>
-      </div>
-
       <h3 className="checkout-shipping__heading">Shipping method</h3>
       <div className="checkout-shipping__methods">
         {methods.map((m) => (
@@ -75,25 +51,9 @@ function CheckoutShipping() {
         ))}
       </div>
 
-      {/* Shipping info note */}
       <div className="checkout-shipping__info-note">
         <IconTruck size={16} />
         <p>Orders ship within 1–3 business days. Tracking emailed once shipped.</p>
-      </div>
-
-      <div className="checkout-shipping__nav">
-        <button
-          className="checkout-shipping__back"
-          onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 1 })}
-        >
-          ← Return to information
-        </button>
-        <button
-          className="btn btn--primary btn--lg"
-          onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 3 })}
-        >
-          Continue to payment
-        </button>
       </div>
     </div>
   )

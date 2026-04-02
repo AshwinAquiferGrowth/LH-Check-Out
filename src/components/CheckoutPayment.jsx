@@ -11,25 +11,6 @@ function CheckoutPayment() {
 
   return (
     <div className="checkout-payment">
-      {/* Summary from steps 1 & 2 */}
-      <div className="checkout-payment__summary">
-        <div className="checkout-payment__summary-row">
-          <span className="checkout-payment__summary-label">Contact</span>
-          <span className="checkout-payment__summary-value">customer@example.com</span>
-          <button className="checkout-payment__change" onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 1 })}>Change</button>
-        </div>
-        <div className="checkout-payment__summary-row">
-          <span className="checkout-payment__summary-label">Ship to</span>
-          <span className="checkout-payment__summary-value">123 Main St, City, KS 66101</span>
-          <button className="checkout-payment__change" onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 1 })}>Change</button>
-        </div>
-        <div className="checkout-payment__summary-row">
-          <span className="checkout-payment__summary-label">Method</span>
-          <span className="checkout-payment__summary-value">Standard Shipping · FREE</span>
-          <button className="checkout-payment__change" onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 2 })}>Change</button>
-        </div>
-      </div>
-
       {/* Payment */}
       <h3 className="checkout-payment__heading">Payment</h3>
       <p className="checkout-payment__secure">
@@ -73,7 +54,6 @@ function CheckoutPayment() {
         </label>
       </div>
 
-      {/* Billing address form — shown when different address selected */}
       {billing === 'different' && (
         <div className="checkout-payment__billing-form">
           <div className="checkout-payment__row">
@@ -101,7 +81,7 @@ function CheckoutPayment() {
         </div>
       )}
 
-      {/* Trust signals — above pay button (Content Block placement) */}
+      {/* Trust signals */}
       <div className="checkout-payment__trust">
         <div className="checkout-payment__trust-item">
           <IconShield size={15} />
@@ -119,19 +99,19 @@ function CheckoutPayment() {
         </div>
       </div>
 
-      {/* SHOPIFY CONSTRAINT: Nothing can be placed below the Pay button */}
+      {/* Pay + return to cart */}
       <div className="checkout-payment__nav">
-        <button
-          className="checkout-payment__back"
-          onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 2 })}
-        >
-          ← Return to shipping
-        </button>
         <button
           className="btn btn--primary btn--lg"
           onClick={() => dispatch({ type: 'SET_CHECKOUT_STEP', payload: 4 })}
         >
           Pay now · ${total.toFixed(2)}
+        </button>
+        <button
+          className="checkout-payment__back"
+          onClick={() => { dispatch({ type: 'SET_CHECKOUT_STEP', payload: 0 }); dispatch({ type: 'OPEN_DRAWER' }) }}
+        >
+          ← Return to cart
         </button>
       </div>
     </div>
