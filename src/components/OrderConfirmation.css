@@ -114,31 +114,35 @@
   line-height: var(--line-height-normal);
 }
 
-/* Brand message */
+/* Brand moment — static graphic */
 .confirmation__brand-message {
   text-align: center;
-  padding: var(--space-4);
-  background-color: var(--color-teal-light);
+  padding: var(--space-6) var(--space-4);
+  background-color: var(--color-teal);
   border-radius: var(--border-radius);
   margin-bottom: var(--space-5);
 }
 
+.confirmation__brand-logo {
+  height: 20px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  margin-bottom: var(--space-3);
+}
+
 .confirmation__brand-tagline {
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
   font-style: italic;
-  color: var(--color-heading);
-  margin-bottom: var(--space-2);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-3);
 }
 
-.confirmation__brand-follow {
+.confirmation__brand-hashtag {
   font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-  line-height: var(--line-height-relaxed);
-}
-
-.confirmation__brand-follow strong {
-  color: var(--color-teal);
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* Continue + help */

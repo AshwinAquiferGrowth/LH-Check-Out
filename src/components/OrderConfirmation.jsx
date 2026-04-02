@@ -76,12 +76,6 @@ function OrderConfirmation() {
               </div>
             </div>
 
-            {/* Brand message */}
-            <div className="confirmation__brand-message">
-              <p className="confirmation__brand-tagline">Another day, another chance to live healthillie</p>
-              <p className="confirmation__brand-follow">Follow us <strong>@livehealthillie</strong> for clean living tips, new drops, and community stories.</p>
-            </div>
-
             <button
               className="btn btn--primary btn--lg confirmation__continue"
               onClick={() => dispatch({ type: 'CLEAR_CART' })}
